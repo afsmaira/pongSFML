@@ -8,13 +8,14 @@ const double alturaTela = 600;
 const double larguraRaquete = 20;
 const double alturaRaquete = 100;
 const double raioBola = 10;
+const double velBola = 0.2;
 
 class Bola {
     sf::CircleShape forma;
     sf::Vector2f velocidade;
 public:
 
-    Bola(double raio) : forma(raio), velocidade(-0.4f, -0.4f) {
+    Bola(double raio) : forma(raio), velocidade(-velBola, -velBola) {
         forma.setFillColor(sf::Color::White);
         forma.setPosition(larguraTela / 2, alturaTela / 2);
     }
@@ -30,7 +31,7 @@ public:
     void resetar() {
         forma.setPosition(larguraTela / 2, alturaTela / 2);
         velocidade.x = -velocidade.x;
-        velocidade.y = (rand() % 2 == 0) ? -0.4f : 0.4f;
+        velocidade.y = (rand() % 2 == 0) ? -velBola : velBola;
     }
 
     sf::CircleShape shape() const { return forma; }
